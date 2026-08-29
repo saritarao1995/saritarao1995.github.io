@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sarita Rao · Full-Stack Developer</title>
+  <meta name="description" content="Full-stack developer in Kota. React, Node.js, Express, MongoDB, MySQL — REST APIs, dashboards, chat, voice and video with Firebase and Agora." />
+  <link rel="canonical" href="https://saritarao1995.github.io/" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://saritarao1995.github.io/" />
+  <meta property="og:title" content="Sarita Rao — Full-Stack Developer" />
+  <meta property="og:description" content="React, Node.js, Express, MongoDB/MySQL. REST APIs, admin dashboards, and real-time chat, voice, and video." />
+  <meta property="og:image" content="https://saritarao1995.github.io/photo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0b1f2a;
+      --muted: #5a6d78;
+      --line: #d7e2e8;
+      --paper: #f7fafc;
+      --surface: #ffffff;
+      --accent: #0d8f8a;
+      --accent-deep: #0a6f6b;
+      --wash: #e8f4f3;
+      --hero-grad: linear-gradient(135deg, #0b1f2a 0%, #134e5e 48%, #0d8f8a 100%);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Sora", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 420px at 10% -10%, #d9f3f1 0%, transparent 55%),
+        radial-gradient(700px 380px at 100% 0%, #e4eef5 0%, transparent 50%),
+        var(--paper);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent-deep); }
+    img { max-width: 100%; display: block; }
+
+    .wrap {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(247, 250, 252, 0.86);
+      border-bottom: 1px solid rgba(215, 226, 232, 0.8);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-left: 18px;
+    }
+
+    .nav-links a:hover { color: var(--accent-deep); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      background: var(--accent);
+      color: #fff !important;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover { background: var(--accent-deep); transform: translateY(-1px); }
+
+    .btn.ghost {
+      background: transparent;
+      color: var(--ink) !important;
+      border-color: var(--line);
+    }
+
+    .hero {
+      position: relative;
+      min-height: min(88vh, 760px);
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 0;
+      margin: 20px auto 28px;
+      width: min(1100px, calc(100% - 40px));
+      border-radius: 28px;
+      overflow: hidden;
+      background: var(--hero-grad);
+      color: #f4fbfb;
+      box-shadow: 0 24px 60px rgba(11, 31, 42, 0.22);
+      animation: rise 0.7s ease both;
+    }
+
+    .hero-copy {
+      padding: clamp(36px, 6vw, 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-kicker {
+      margin: 0 0 14px;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.78;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      animation: fadeUp 0.8s ease 0.1s both;
+    }
+
+    .hero .headline {
+      margin: 18px 0 10px;
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      font-weight: 600;
+      max-width: 28ch;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+
+    .hero .lead {
+      margin: 0 0 26px;
+      max-width: 42ch;
+      color: rgba(244, 251, 251, 0.86);
+      animation: fadeUp 0.8s ease 0.3s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      animation: fadeUp 0.8s ease 0.4s both;
+    }
+
+    .hero-actions .btn {
+      background: #fff;
+      color: var(--ink) !important;
+    }
+
+    .hero-actions .btn.ghost {
+      background: transparent;
+      color: #fff !important;
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 420px;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      animation: zoomSoft 1.1s ease both;
+    }
+
+    section.block {
+      padding: 42px 0 8px;
+    }
+
+    .section-label {
+      margin: 0 0 8px;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      font-weight: 700;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      letter-spacing: -0.02em;
+    }
+
+    .about-text {
+      max-width: 68ch;
+      color: #243943;
+      font-size: 1.05rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0;
+      border-left: 2px solid var(--line);
+      margin-left: 6px;
+    }
+
+    .item {
+      position: relative;
+      padding: 0 0 28px 24px;
+    }
+
+    .item::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--wash);
+    }
+
+    .when {
+      margin: 0 0 4px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .item h3 {
+      margin: 0 0 4px;
+      font-size: 1.15rem;
+    }
+
+    .org {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .item ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #243943;
+    }
+
+    .item li { margin-bottom: 6px; }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skills span {
+      background: var(--wash);
+      color: var(--accent-deep);
+      border: 1px solid #cfe7e5;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .project-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .project {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px 22px 20px;
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project:hover {
+      border-color: #b7d8d5;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(11, 31, 42, 0.07);
+    }
+
+    .project h3 {
+      margin: 0 0 6px;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.35rem;
+    }
+
+    .stack {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .project p {
+      margin: 0 0 12px;
+      color: #243943;
+    }
+
+    .project a {
+      font-weight: 600;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .project a:hover { text-decoration: underline; }
+
+    footer {
+      margin: 48px 0 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      align-items: center;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: var(--accent-deep);
+      font-weight: 600;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes zoomSoft {
+      from { opacity: 0.4; transform: scale(1.06); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-visual {
+        min-height: 320px;
+        order: -1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">Sarita Rao</a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+      </nav>
+      <a class="btn" href="mailto:raosarita634@gmail.com">Email me</a>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <p class="hero-kicker">Portfolio</p>
+      <h1>Sarita Rao</h1>
+      <p class="headline">Full-Stack Developer · Kota, Rajasthan</p>
+      <p class="lead">
+        I ship production web apps with React, Node.js, and Laravel — REST APIs,
+        admin dashboards, and real-time chat, voice, and video.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="Sarita_Rao_Resume.pdf" download>Download resume</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/sarita-rao-a19111139/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/saritarao1995" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="photo.png" alt="Sarita Rao" />
+    </div>
+  </section>
+
+  <main class="wrap">
+    <section class="block" id="about">
+      <p class="section-label">About</p>
+      <h2 class="section-title">Building products people use</h2>
+      <p class="about-text">
+        Full-stack JavaScript developer with production experience in React.js, Node.js, Express,
+        and MongoDB / MySQL. I build REST APIs, admin dashboards, and real-time chat, voice, and video
+        using Firebase and Agora. I communicate clearly and ship working product.
+        Open to Software Developer / Full-Stack (React, Node.js) roles.
+      </p>
+    </section>
+
+    <section class="block" id="experience">
+      <p class="section-label">Experience</p>
+      <h2 class="section-title">Where I’ve worked</h2>
+      <div class="timeline">
+        <article class="item">
+          <p class="when">Nov 2025 – Present · Kota, Rajasthan</p>
+          <h3>Software Developer</h3>
+          <p class="org">Synilogic Tech Private Limited</p>
+          <ul>
+            <li>Develop and maintain full-stack web apps in React.js, Node.js, and Laravel used by live product users.</li>
+            <li>Build chat, voice/video calling, and live streaming with Firebase and Agora.</li>
+            <li>Model data in MongoDB, MySQL, and SQL Server; test APIs with Postman; collaborate on Git.</li>
+            <li>Integrate frontend interfaces with backend APIs and ship responsive UI for production traffic.</li>
+          </ul>
+        </article>
+        <article class="item">
+          <p class="when">Jan 2018 – Jun 2018 · Kota, Rajasthan</p>
+          <h3>Software Developer Intern</h3>
+          <p class="org">Shineing Group Pvt. Ltd.</p>
+          <ul>
+            <li>Contributed to web applications using Node.js, React.js, and Laravel.</li>
+            <li>Supported UI work, bug fixes, and day-to-day issue troubleshooting with the team.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="projects">
+      <p class="section-label">Projects</p>
+      <h2 class="section-title">Live product work</h2>
+      <div class="project-list">
+        <article class="project">
+          <h3>Project Management</h3>
+          <p class="stack">React.js · Node.js · REST APIs</p>
+          <p>
+            Full-stack project tracking product for teams — task workflows, status updates,
+            and admin-facing views built with React and Node.js APIs for live Synilogic users.
+          </p>
+          <a href="https://project-management.synilogictech.in/" target="_blank" rel="noopener">project-management.synilogictech.in</a>
+        </article>
+        <article class="project">
+          <h3>AstroJivan</h3>
+          <p class="stack">React.js · Node.js · Firebase · Agora</p>
+          <p>
+            Astrology consultation platform with real-time chat, voice/video calling, and live streaming.
+            Worked on frontend flows and API integration for consultation sessions and live product features.
+          </p>
+          <a href="https://astrojivan.in/" target="_blank" rel="noopener">astrojivan.in</a>
+        </article>
+        <article class="project">
+          <h3>Counsel Karo</h3>
+          <p class="stack">Laravel · React.js</p>
+          <p>
+            Counseling / advisory web product combining Laravel backend services with a React frontend
+            for user-facing journeys and admin operations.
+          </p>
+          <a href="https://counselkaro.com/" target="_blank" rel="noopener">counselkaro.com</a>
+        </article>
+        <article class="project">
+          <h3>AstroAdhyay</h3>
+          <p class="stack">Laravel · MySQL</p>
+          <p>
+            Astrology content and consultation web app built on Laravel — pages, forms, and
+            backend modules for a production audience.
+          </p>
+          <a href="https://astroadhyay.com/" target="_blank" rel="noopener">astroadhyay.com</a>
+        </article>
+        <article class="project">
+          <h3>Stuwrite</h3>
+          <p class="stack">Laravel</p>
+          <p>
+            Student-facing web platform delivered with Laravel — content flows, forms, and
+            maintainable server-rendered product pages.
+          </p>
+          <a href="http://stuwrite.com/" target="_blank" rel="noopener">stuwrite.com</a>
+        </article>
+        <article class="project">
+          <h3>Kheteshwar</h3>
+          <p class="stack">Laravel</p>
+          <p>
+            Astrology business website on Laravel with service pages and enquiry flows
+            for end users discovering and contacting the brand.
+          </p>
+          <a href="https://kheteshwarastro.com/" target="_blank" rel="noopener">kheteshwarastro.com</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="skills">
+      <p class="section-label">Skills</p>
+      <h2 class="section-title">What I work with</h2>
+      <div class="skills">
+        <span>React.js</span><span>JavaScript</span><span>HTML5</span><span>CSS3</span>
+        <span>Node.js</span><span>Express</span><span>Laravel</span>
+        <span>MongoDB</span><span>MySQL</span><span>SQL Server</span>
+        <span>Firebase</span><span>Agora</span><span>REST APIs</span>
+        <span>Git</span><span>Postman</span><span>Responsive design</span>
+      </div>
+    </section>
+
+    <section class="block" id="education">
+      <p class="section-label">Education</p>
+      <h2 class="section-title">Learning path</h2>
+      <div class="timeline">
+        <article class="item">
+          <p class="when">Mar 2025 – Oct 2025</p>
+          <h3>Web Development</h3>
+          <p class="org">Samyak Computer Classes, Kota</p>
+        </article>
+        <article class="item">
+          <p class="when">2018</p>
+          <h3>MCA · 73%</h3>
+          <p class="org">RIET, Jaipur (RTU, Kota)</p>
+        </article>
+        <article class="item">
+          <p class="when">2015</p>
+          <h3>BCA · 65%</h3>
+          <p class="org">Rajasthan University (RU), Jaipur</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <span>Kota, Rajasthan</span>
+      <a href="mailto:raosarita634@gmail.com">raosarita634@gmail.com</a>
+      <a href="tel:+918561987650">+91 8561987650</a>
+      <a href="https://www.linkedin.com/in/sarita-rao-a19111139/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/saritarao1995" target="_blank" rel="noopener">GitHub</a>
+      <a href="Sarita_Rao_Resume.pdf">Resume</a>
+    </footer>
+  </main>
+</body>
+</html>
